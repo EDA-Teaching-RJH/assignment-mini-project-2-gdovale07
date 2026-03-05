@@ -67,6 +67,31 @@ def main():
             else:
                 book.acc.recipe(recipename.strip())
                 print("recipe saved.")
+
+        elif choice == "3":
+            searchtext = input("search for a recipe: ")
+
+            if searchtext.strip() == "":
+                print("search cannot be empty, please try again")
+            else:
+                print("search results")
+                found = False
+
+                for recipe in book.recipes:
+                    if re.search(searchtext, recipe, re.IGNORECASE):
+                        print("-", recipe)
+                        found = True
+                
+                if found == False:
+                    print(" (no matches)")
+        
+        elif choice == "4":
+            recipetodelete = input("emter the exact recipe name to delete")
+
+            if recipetodelete.strip() == "":
+                print("value cannot be empty, please try again")
+            else:
+                book.delete_recipe(recipetodelete.strip())
                 
         elif choice == "5":
             print("goodbye!")
