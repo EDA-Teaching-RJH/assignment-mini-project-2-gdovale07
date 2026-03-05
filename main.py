@@ -13,12 +13,10 @@ def load_recipes(filename):
     return recipes
 
 def save_recipes(filename, recipes):
-        file = open(filename, "w")
-
-        for recipe in recipes:
-            file.write(recipe + "\n")
-
-        file.close()
+    file = open(filename, "w")
+    for recipe in recipes:
+        file.write(recipe + "\n")
+    file.close()
 
 class recipebook:
     def __init__(self, filename):
@@ -43,43 +41,67 @@ class recipebook:
 def main():
     book = recipebook("recipes.txt")
 
-    print("recipes currently saved:")
-
-    if len(book.recipes) == 0:
-        print("nothing saved yet")
-    else:
-        for recipe in book.recipes:
-            print("-", recipe)
-
-    searchtext = input("search for a recipe or press enter to skip")
-
-    if searchtext != "":
-        print("search results")
-
-        for recipe in book.recipes:
-            if re.search(searchtext, recipe, re.IGNORECASE):
-                print(recipe)
-
-    deletechoice = input("do you want to delete a recipe? y/n: ")
-
-    if deletechoice.lower() == "y":
-        recipetodelete = input("enter exact recipe name to delete")
-        book.delete_recipe(recipetodelete)
-
     while True:
-        recipename = input("enter recipe name or type 'done' to finish: ")
+        print("\n---recipe tracker menu---")
+        print("1) view recipes")
+        print("2) add recipe")
+        print("3) search recipes")
+        print("4) delete recipes")
+        print("5) exit")
 
-        if recipename.lower() == "done":
+        choice = input("choose an option (1-5): ")
+
+        if choice == "1":
+            print("\nrecipes currently saved:")
+            if len(book.recipes) == 0:
+                print("  (nothing saved yet)")
+            else:
+                for recipe in book.recipes:
+                    print("-", recipe)
+
+        elif choice == "5":
+            print("goodbye!")
             break
-
-        if recipename.strip() == "":
-            print("no input found, please enter again")
         else:
-            book.add_recipe(recipename.strip())
+            print("option not added yet.")
+            
+        print("recipes currently saved:")
+
+        if len(book.recipes) == 0:
+            print("nothing saved yet")
+        else:
+            for recipe in book.recipes:
+                print("-", recipe)
+
+        searchtext = input("search for a recipe or press enter to skip")
+
+        if searchtext != "":
+            print("search results")
+
+            for recipe in book.recipes:
+                if re.search(searchtext, recipe, re.IGNORECASE):
+                    print(recipe)
+
+        deletechoice = input("do you want to delete a recipe? y/n: ")
+
+        if deletechoice.lower() == "y":
+            recipetodelete = input("enter exact recipe name to delete")
+            book.delete_recipe(recipetodelete)
+
+        while True:
+            recipename = input("enter recipe name or type 'done' to finish: ")
+
+            if recipename.lower() == "done":
+                break
+
+            if recipename.strip() == "":
+                print("no input found, please enter again")
+            else:
+                book.add_recipe(recipename.strip())
 
 
-    print("recipe tracker has now started")
-    print("recipes:", book.recipes)
+        print("recipe tracker has now started")
+        print("recipes:", book.recipes)
 
 if __name__ == "__main__":
     main()
