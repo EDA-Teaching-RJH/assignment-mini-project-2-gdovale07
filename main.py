@@ -12,21 +12,33 @@ def load_recipes(filename):
 
     return recipes
 
-recipes = load_recipes("recipes.txt")
+class recipebook:
+    def __init__(self, filename):
+        self.filename = filename
+        self.recipes = load_recipes(filename)
+
+    def save(self):
+        save_recipes(self.filename, self.recipes)
+
+    def add_recipe(self, recipe_name):
+        self.recipes.append(recipe_name)
+        self.save()
+
+book = recipebook("recipes.txt")
 
 print("recipes currently saved:")
 
-if len(recipes) == 0:
+if len(book.recipes) == 0:
     print("nothing saved yet")
 else:
-    for recipe in recipes:
+    for recipe in book.recipes:
         print("-", recipe)
 
 def save_recipes(filename, recipes):
     file = open(filename, "w")
 
     for recipe in recipes:
-        file.write(recipe + "/n")
+        file.write(recipe + "\n")
 
     file.close()
 
@@ -35,7 +47,7 @@ searchtext = input("search for a recipe or press enter to skip")
 if searchtext != "":
     print("search results")
 
-    for recipe in recipes:
+    for recipe in book.recipes:
         if re.search(searchtext, recipe, re.IGNORECASE):
             print(recipe)
 
@@ -45,13 +57,11 @@ while True:
     if recipename.lower() == "done":
         break
 
-    if recipename.strip == "":
+    if recipename.strip() == "":
         print("no input found, please enter again")
     else:
-        recipes.append(recipename.strip())
+        book.add_recipe(recipename.strip())
 
 
 print("recipe tracker has now started")
-print("recipes:", recipes)
-
-save_recipes("recipes.txt", recipes)
+print("recipes:", book.recipes)

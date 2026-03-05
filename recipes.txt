@@ -1,1 +1,5 @@
-pizza/n/npizza/nsoup/n/nsoup/npizza/npasta/n/nsoup/n/nrice/n
+rice
+beans
+pizza
+pasta
+burger
