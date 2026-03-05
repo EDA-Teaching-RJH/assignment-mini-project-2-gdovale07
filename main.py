@@ -1,3 +1,5 @@
+import re
+
 recipes = []
 
 file = open("recipes.txt", "r")
