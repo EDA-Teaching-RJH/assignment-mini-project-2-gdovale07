@@ -23,6 +23,14 @@ class recipebook:
     def add_recipe(self, recipe_name):
         self.recipes.append(recipe_name)
         self.save()
+    
+    def delete_recipe(self, recipe_name):
+        if recipe_name in self.recipes:
+            self.recipes.remove(recipe_name)
+            self.save()
+            print("recipe deleted")
+        else:
+            print("recipe not found")
 
 book = recipebook("recipes.txt")
 
@@ -50,6 +58,12 @@ if searchtext != "":
     for recipe in book.recipes:
         if re.search(searchtext, recipe, re.IGNORECASE):
             print(recipe)
+
+deletechoice = input("do you want to delete a recipe? y/n: ")
+
+if deletechoice.lower() == "y":
+    recipetodelete = input("enter exact recipe name to delete")
+    book.delete_recipe(recipetodelete)
 
 while True:
     recipename = input("enter recipe name or type 'done' to finish: ")
