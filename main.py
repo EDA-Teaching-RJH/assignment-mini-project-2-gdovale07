@@ -1,6 +1,6 @@
 recipes = []
-
-recipes.append("pasta")
+recipename = input("enter name of recipe")
+recipes.append(recipename)
 
 print("recipe tracker has now started")
 print("recipes:", recipes)
