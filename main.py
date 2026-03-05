@@ -12,6 +12,15 @@ file.close()
 print("recipes currently saved:")
 print(recipes)
 
+searchtext = input("search for a recipe or press enter to skip")
+
+if searchtext != "":
+    print("search results")
+
+    for recipe in recipes:
+        if re.search(searchtext, recipe, re.IGNORECASE):
+            print(recipe)
+
 while True:
     recipename = input("enter recipe name or type 'done' to finish: ")
 
