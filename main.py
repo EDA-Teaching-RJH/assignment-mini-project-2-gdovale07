@@ -21,7 +21,15 @@ if len(recipes) == 0:
 else:
     for recipe in recipes:
         print("-", recipe)
-        
+
+def save_recipes(filename, recipes):
+    file = open(filename, "w")
+
+    for recipe in recipes:
+        file.write(recipe + "/n")
+
+    file.close()
+
 searchtext = input("search for a recipe or press enter to skip")
 
 if searchtext != "":
@@ -46,9 +54,4 @@ while True:
 print("recipe tracker has now started")
 print("recipes:", recipes)
 
-file = open("recipes.txt", "w")
-
-for recipe in recipes:
-    file.write(recipe + "/n")
-
-file.close()
+save_recipes("recipes.txt", recipes)
