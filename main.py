@@ -58,13 +58,20 @@ def main():
             else:
                 for recipe in book.recipes:
                     print("-", recipe)
+        
+        elif choice == "2":
+            recipename = input("enter recipe name: ")
 
+            if recipename.strip() == "":
+                print("no input found, please enter again")
+            else:
+                book.acc.recipe(recipename.strip())
+                print("recipe saved.")
+                
         elif choice == "5":
             print("goodbye!")
             break
-        else:
-            print("option not added yet.")
-            
+
         print("recipes currently saved:")
 
         if len(book.recipes) == 0:
