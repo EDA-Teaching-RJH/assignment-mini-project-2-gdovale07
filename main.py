@@ -10,8 +10,13 @@ for line in file:
 file.close()
 
 print("recipes currently saved:")
-print(recipes)
 
+if len(recipes) == 0:
+    print("nothing saved yet")
+else:
+    for recipe in recipes:
+        print("-", recipe)
+        
 searchtext = input("search for a recipe or press enter to skip")
 
 if searchtext != "":
