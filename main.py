@@ -6,7 +6,9 @@ for line in file:
     recipes.append(line.strip())
 
 file.close()
-            
+
+print("recipes currently saved:")
+print(recipes)
 while True:
     recipename = input("enter recipe name or type 'done' to finish: ")
 
