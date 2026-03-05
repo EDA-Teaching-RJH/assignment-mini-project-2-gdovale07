@@ -1,5 +1,6 @@
-class RecipeBook:
-    def __init__(self, filename):
-        self.filename = filename
-        self.recipes = []
-        self.load()
+recipes = []
+
+
+
+print("recipe tracker has now started")
+print("recipes:", recipes)
