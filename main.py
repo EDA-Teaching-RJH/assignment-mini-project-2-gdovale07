@@ -1,13 +1,18 @@
 import re
 
-recipes = []
+def load_recipes(filename):
+    recipes = []
 
-file = open("recipes.txt", "r")
+    file = open(filename, "r")
+    for line in file:
+        recipe = line.strip()
+        if recipe != "":
+            recipes.append(recipe)
+    file.close()
 
-for line in file:
-    recipes.append(line.strip())
+    return recipes
 
-file.close()
+recipes = load_recipes("recipes.txt")
 
 print("recipes currently saved:")
 
