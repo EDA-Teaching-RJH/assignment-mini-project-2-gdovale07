@@ -7,8 +7,17 @@ for line in file:
 
 file.close()
             
-recipename = input("enter name of recipe")
-recipes.append(recipename)
+while True:
+    recipename = input("enter recipe name or type 'done' to finish: ")
+
+    if recipename.lower() == "done":
+        break
+
+    if recipename.strip == "":
+        print("no input found, please enter again")
+    else:
+        recipes.append(recipename.strip())
+
 
 print("recipe tracker has now started")
 print("recipes:", recipes)
