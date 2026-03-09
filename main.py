@@ -92,7 +92,7 @@ def main():
                 print("value cannot be empty, please try again")
             else:
                 book.delete_recipe(recipetodelete.strip())
-                
+
         elif choice == "5":
             print("goodbye!")
             break
