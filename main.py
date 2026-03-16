@@ -64,7 +64,7 @@ def main():## start of the running code
             if recipename.strip() == "":
                 print("no input found, please enter again")
             else:
-                book.acc.recipe(recipename.strip())
+                book.add_recipe(recipename.strip())
                 print("recipe saved.")
 ## saves inputted recipes into the database
         elif choice == "3":
@@ -95,44 +95,6 @@ def main():## start of the running code
         elif choice == "5":
             print("goodbye!")
             break
-## ends main menu option and moves on to the next step
-        print("recipes currently saved:")
-
-        if len(book.recipes) == 0:
-            print("nothing saved yet")
-        else:
-            for recipe in book.recipes:
-                print("-", recipe)
-## prints current recipes in the database, if there are none saved, the code will inform the user of that
-        searchtext = input("search for a recipe or press enter to skip")
-
-        if searchtext != "":
-            print("search results")
-
-            for recipe in book.recipes:
-                if re.search(searchtext, recipe, re.IGNORECASE):
-                    print(recipe)
-
-        deletechoice = input("do you want to delete a recipe? y/n: ")
-## gives the user an option to delete any recipes
-        if deletechoice.lower() == "y":
-            recipetodelete = input("enter exact recipe name to delete")
-            book.delete_recipe(recipetodelete)
-
-        while True:
-            recipename = input("enter recipe name or type 'done' to finish: ")
-
-            if recipename.lower() == "done":
-                break
-
-            if recipename.strip() == "":
-                print("no input found, please enter again")
-            else:
-                book.add_recipe(recipename.strip())
-
-
-        print("recipe tracker has now started")
-        print("recipes:", book.recipes)
 
 if __name__ == "__main__":
     main()
