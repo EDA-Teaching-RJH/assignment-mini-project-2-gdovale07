@@ -95,6 +95,6 @@ def main():## start of the running code
         elif choice == "5":
             print("goodbye!")
             break
-
+## exits main menu and resets the code
 if __name__ == "__main__":
     main()
